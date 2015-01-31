@@ -19,6 +19,13 @@
 
 -include device/samsung/smdk4412-common/BoardCommonConfig.mk
 
+# Validus optimizations
+SYMMETRY := true
+GRAPHITE_OPTS := true
+STRICT_ALIASING := true
+VALIDUS_CHANGELOG := true
+NO_BLOCK_OTA := false
+
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := xmm6262
