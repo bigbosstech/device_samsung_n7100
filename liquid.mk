@@ -28,14 +28,11 @@ PRODUCT_RELEASE_NAME := n7100
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
-# Get the prebuilt list of APNs
-$(call inherit-product, vendor/nameless/config/apns.mk)
-
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/nameless/config/common.mk)
+$(call inherit-product, vendor/liquid/config/common_phone.mk)
 
 # This is where we'd set a backup provider if we had one
 $(call inherit-product, device/samsung/n7100/n7100.mk)
@@ -44,7 +41,7 @@ $(call inherit-product, device/samsung/n7100/n7100.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := nameless_n7100
+PRODUCT_NAME := liquid_n7100
 PRODUCT_DEVICE := n7100
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
