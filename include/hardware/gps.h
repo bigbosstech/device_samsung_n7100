@@ -422,6 +422,28 @@ typedef uint8_t GpsNavigationMessageType;
  */
 #define AGPS_USE_PSC
 
+/**
+ * Name for the GPS_Geofencing interface.
+ */
+#define GPS_GEOFENCING_INTERFACE   "gps_geofencing"
+
+
+
+/**
+ * Name of the GPS Measurements interface.
+ */
+#define GPS_MEASUREMENT_INTERFACE   "gps_measurement"
+
+/**
+ * Name of the GPS navigation message interface.
+ */
+#define GPS_NAVIGATION_MESSAGE_INTERFACE     "gps_navigation_message"
+
+/**
+ * Name of the GNSS/GPS configuration interface.
+ */
+#define GNSS_CONFIGURATION_INTERFACE     "gnss_configuration"
+
 
 /** Represents a location. */
 typedef struct {
@@ -501,6 +523,7 @@ typedef struct {
      */
     uint32_t    used_in_fix_mask;
 } GpsSvStatus;
+
 
 /* 2G and 3G */
 /* In 3G lac is discarded */
@@ -802,6 +825,50 @@ typedef AGpsInterface_v2    AGpsInterface;
 #define AGPS_CERTIFICATE_OPERATION_SUCCESS               0
 #define AGPS_CERTIFICATE_ERROR_GENERIC                -100
 #define AGPS_CERTIFICATE_ERROR_TOO_MANY_CERTIFICATES  -101
+
+/** A data structure that represents an X.509 certificate using DER encoding */
+typedef struct {
+    size_t  length;
+    u_char* data;
+} DerEncodedCertificate;
+
+/**
+ * A type definition for SHA1 Fingerprints used to identify X.509 Certificates
+ * The Fingerprint is a digest of the DER Certificate that uniquely identifies it.
+ */
+typedef struct {
+    u_char data[20];
+} Sha1CertificateFingerprint;
+
+/** AGPS Interface to handle SUPL certificate operations */
+typedef struct {
+    /** set to sizeof(SuplCertificateInterface) */
+    size_t size;
+
+    /**
+     * Installs a set of Certificates used for SUPL connections to the AGPS server.
+     * If needed the HAL should find out internally any certificates that need to be removed to
+     * accommodate the certificates to install.
+     * The certificates installed represent a full set of valid certificates needed to connect to
+     * AGPS SUPL servers.
+     * The list of certificates is required, and all must be available at the same time, when trying
+     * to establish a connection with the AGPS Server.
+     *
+     * Parameters:
+     *      certificates - A pointer to an array of DER encoded certificates that are need to be
+     *                     installed in the HAL.
+     *      length - The number of certificates to install.
+     * Returns:
+     *      AGPS_CERTIFICATE_OPERATION_SUCCESS if the operation is completed successfully
+     *      AGPS_CERTIFICATE_ERROR_TOO_MANY_CERTIFICATES if the HAL cannot store the number of
+     *          certificates attempted to be installed, the state of the certificates stored should
+     *          remain the same as before on this error case.
+     *
+     * IMPORTANT:
+     *      If needed the HAL should find out internally the set of certificates that need to be
+     *      removed to accommodate the certificates to install.
+     */
+    int  (*install_certificates) ( const DerEncodedCertificate* certificates, size_t length );
 
 /** A data structure that represents an X.509 certificate using DER encoding */
 typedef struct {
