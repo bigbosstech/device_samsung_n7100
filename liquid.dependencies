@@ -1,32 +1,32 @@
 [
     {
-        "remote": "lsd",
-        "repository": "android_device_samsung_smdk4412-common",
+        "repository": "crdroidandroid/android_device_samsung_smdk4412-common",
         "target_path": "device/samsung/smdk4412-common",
-        "revision": "lollipop"
+        "branch": "cm-12.0"
     },
     {
-        "remote": "lsd",
-        "repository": "android_kernel_samsung_smdk4412",
+        "repository": "crdroidandroid/android_kernel_samsung_smdk4412",
         "target_path": "kernel/samsung/smdk4412",
-        "revision": "lollipop"
+        "branch": "cm-12.0"
     },
     {
-        "remote": "cm",
-        "repository": "android_packages_apps_SamsungServiceMode",
+        "repository": "crdroidandroid/android_packages_apps_SamsungServiceMode",
         "target_path": "packages/apps/SamsungServiceMode",
-        "revision": "cm-12.0"
+        "branch": "cm-12.0"
     },
     {
-        "remote": "gh",
-        "repository": "NamelessRom/android_hardware_samsung",
+        "repository": "crdroidandroid/android_hardware_samsung",
         "target_path": "hardware/samsung",
-        "revision": "n-2.0"
+        "branch": "cm-12.0"
     },
     {
-        "remote": "gh",
-        "repository": "CrazyWeasel/proprietary_vendor_samsung",
+        "repository": "CyanogenMod/android_device_samsung_qcom-common",
+        "target_path": "device/samsung/qcom-common",
+        "branch": "cm-12.0"
+    },
+    {
+        "repository": "TheMuppets/proprietary_vendor_samsung",
         "target_path": "vendor/samsung",
-        "revision": "n-2.0"
+        "branch": "cm-12.0"
     }
 ]
