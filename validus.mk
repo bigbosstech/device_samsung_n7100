@@ -32,7 +32,7 @@ TARGET_SCREEN_WIDTH := 720
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/validus/config/common_phone.mk)
+$(call inherit-product, vendor/validus/config/common_full_phone.mk)
 
 $(call inherit-product, vendor/validus/config/nfc_enhanced.mk)
 
